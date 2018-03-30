@@ -1,13 +1,16 @@
 package com.leinardi.fabsizebug;
 
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +33,24 @@ public class MainActivity extends AppCompatActivity {
 
         FloatingActionButton fab2 = (FloatingActionButton) findViewById(R.id.fab2);
         fab2.setSize(FloatingActionButton.SIZE_NORMAL);
+
+        FloatingActionButton fab5 = new FloatingActionButton(this);
+        fab5.setSize(FloatingActionButton.SIZE_MINI);
+        CoordinatorLayout.LayoutParams layoutParams = new CoordinatorLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+        layoutParams.gravity = Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL;
+        int margin = getResources().getDimensionPixelOffset(R.dimen.fab_margin);
+        layoutParams.setMargins(
+                margin,
+                margin,
+                margin,
+                margin
+        );
+        fab5.setLayoutParams(layoutParams);
+        fab5.setImageResource(android.R.drawable.ic_dialog_email);
+
+        ((CoordinatorLayout) findViewById(R.id.root)).addView(fab5);
     }
 
     @Override
